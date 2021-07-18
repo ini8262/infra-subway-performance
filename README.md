@@ -106,7 +106,6 @@ npm run dev
     	select covid.programmer_id, name from covid
     	join (select hospital.id, name from hospital) as h on h.id = covid.hospital_id   
     ) as c on c.programmer_id = p.id
-    order by user.id
     ```
     > covid.programmer_id에 인덱스 설정.member.age 인덱스 설정. programmer.country 데이터 타입을 varchar(45) 로 변경하고, 인덱스 설정     
     
@@ -125,6 +124,8 @@ npm run dev
     ) as c 
     on m.id = c.member_id
     group by stay
+    order by null
+ 
     ```
     > covid.member_id / programmer.member_id 인덱스 설정.
      covid.stay 데이터타입을 varchar(18)으로 변경
@@ -142,6 +143,7 @@ npm run dev
     inner join (select id from hospital where name = '서울대병원') as h
        on c.hospital_id = h.id
     group by exercise
+    order by null
     ```
     > programmer.exercise의 데이터 타입을 varchar(26)으로 변경
 
